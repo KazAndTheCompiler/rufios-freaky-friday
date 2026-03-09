@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎯 Rufio's Freaky Friday - Overengineered Todo App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1>🎯 Rufio's Freaky Friday</h1>
+        <p class="subtitle">The Most Overengineered Todo App Ever Created</p>
+        
+        <div class="analytics-bar">
+          <div class="analytics-item">
+            <div class="analytics-value" id="task-count">0</div>
+            <div class="analytics-label">Total Tasks</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-value" id="tasks-completed">0</div>
+            <div class="analytics-label">Completed</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-value" id="completion-rate">0%</div>
+            <div class="analytics-label">Completion Rate</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-value" id="undo-count">0</div>
+            <div class="analytics-label">Undo Available</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="add-section">
+        <div class="input-wrapper">
+          <input type="text" id="addListItem" placeholder="What needs to be done? (Be specific, Rufio!)" />
+          <button class="add-btn" onclick="handleAddTask()">➕ Add Task</button>
+        </div>
+        
+        <div class="controls">
+          <button class="control-btn" onclick="window.app.undo()">↩️ Undo</button>
+          <button class="control-btn" onclick="window.app.redo()">↪️ Redo</button>
+          <button class="control-btn" onclick="quickAdd('Finish the app', 'CRITICAL')">🔥 Critical</button>
+          <button class="control-btn" onclick="quickAdd('Review PRs', 'HIGH')">⚡ High</button>
+          <button class="control-btn" onclick="quickAdd('Write docs', 'MEDIUM')">📝 Medium</button>
+          <button class="control-btn" onclick="quickAdd('Deploy', 'LOW')">🚀 Low</button>
+        </div>
+      </section>
+
+      <section class="task-section">
+        <div class="task-header">
+          <h2>Tasks</h2>
+          <span id="redo-count">0 redo available</span>
+        </div>
+        
+        <ul id="task-list"></ul>
+        
+        <div id="empty-state">
+          <div class="empty-icon">🎉</div>
+          <h3>No tasks yet!</h3>
+          <p>Add a task above to get started on your productivity journey!</p>
+          <p style="margin-top: 1rem; font-size: 0.875rem;">💡 Pro tip: Complete tasks for particle effects!</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          Built with <span class="heart">❤️</span> and 
+          <strong>12 design patterns</strong> by Rufio
+        </p>
+        <p style="margin-top: 0.5rem; font-style: italic;">
+          "I just wanted a simple todo app" - Rufio, probably
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+    <script>
+      function handleAddTask() {
+        const input = document.getElementById('addListItem');
+        if (input && input.value.trim()) {
+          window.app.addTask(input.value.trim());
+          input.value = '';
+        }
+      }
+
+      function quickAdd(text, priority) {
+        window.app.addTask(text, priority);
+      }
+
+      document.getElementById('addListItem')?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleAddTask();
+      });
+    </script>
+  </body>
+</html>
