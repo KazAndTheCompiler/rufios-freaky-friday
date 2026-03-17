@@ -66,10 +66,85 @@
         </div>
       </section>
 
+      <!-- 🧀 LASAGNE CHEESE CALCULATOR 9000™ -->
+      <section class="cheese-section">
+        <div class="cheese-header">
+          <h2>🧀 Lasagne Cheese Calculator 9000™</h2>
+          <p class="cheese-subtitle">Enterprise-grade dairy computation engine</p>
+        </div>
+
+        <div class="cheese-config">
+          <!-- Servings & Layers -->
+          <div class="cheese-inputs">
+            <div class="cheese-input-group">
+              <label for="cheese-servings">Servings</label>
+              <input type="number" id="cheese-servings" value="4" min="1" max="50" />
+            </div>
+            <div class="cheese-input-group">
+              <label for="cheese-layers">Pasta Layers</label>
+              <input type="number" id="cheese-layers" value="4" min="2" max="12" />
+            </div>
+          </div>
+
+          <!-- Cheese Variety Selector -->
+          <div class="cheese-variety-grid" id="cheese-variety-grid">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Strategy Selector -->
+          <div class="strategy-selector">
+            <label>Distribution Strategy</label>
+            <div class="strategy-buttons" id="strategy-buttons">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <button class="calculate-btn" onclick="window.runCheeseCalculation()">
+            🔬 Calculate Cheese
+          </button>
+        </div>
+
+        <!-- Results -->
+        <div class="cheese-results" id="cheese-results" style="display:none">
+          <div class="cheese-rating-banner" id="cheese-rating-banner"></div>
+
+          <div class="cheese-stats-grid">
+            <div class="cheese-stat">
+              <div class="cheese-stat-value" id="result-total-grams">—</div>
+              <div class="cheese-stat-label">Total Grams</div>
+            </div>
+            <div class="cheese-stat">
+              <div class="cheese-stat-value" id="result-per-serving">—</div>
+              <div class="cheese-stat-label">g / Serving</div>
+            </div>
+            <div class="cheese-stat">
+              <div class="cheese-stat-value" id="result-layers">—</div>
+              <div class="cheese-stat-label">Layers</div>
+            </div>
+            <div class="cheese-stat">
+              <div class="cheese-stat-value" id="result-strategy">—</div>
+              <div class="cheese-stat-label">Strategy</div>
+            </div>
+          </div>
+
+          <!-- Per-cheese totals -->
+          <div class="cheese-breakdown" id="cheese-breakdown"></div>
+
+          <!-- Layer-by-layer visual -->
+          <div class="layer-visual" id="layer-visual"></div>
+
+          <!-- Recommendation -->
+          <div class="cheese-recommendation" id="cheese-recommendation"></div>
+
+          <!-- Warnings -->
+          <div class="cheese-warnings" id="cheese-warnings"></div>
+        </div>
+      </section>
+
       <footer>
         <p>
           Built with <span class="heart">❤️</span> and 
-          <strong>12 design patterns</strong> by Rufio
+          <strong>13 design patterns + 1 cheese engine + 1 brute-force optimiser</strong> by Rufio
         </p>
         <p style="margin-top: 0.5rem; font-style: italic;">
           "I just wanted a simple todo app" - Rufio, probably
@@ -78,6 +153,8 @@
     </div>
 
     <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/cheeseUI.ts"></script>
+    <script type="module" src="/src/optimiserUI.ts"></script>
     <script>
       function handleAddTask() {
         const input = document.getElementById('addListItem');
